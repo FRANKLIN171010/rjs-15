@@ -1,36 +1,13 @@
-import React from "react";
-import useToggle from "./useToggle";
+import { useState } from "react";
 
-function App() {
+function useToggle(initialValue = false) {
+  const [value, setValue] = useState(initialValue);
 
-  // TODO:
-  // Use the custom useToggle Hook here
-  // Example:
-  // const [isOn, toggle] = useToggle(false);
+  const toggle = () => {
+    setValue((prevValue) => !prevValue);
+  };
 
-
-  return (
-    <div className="container">
-
-      <h1>Custom Toggle Hook</h1>
-
-      <div className="card">
-
-        <h2>
-          Status:
-          {/* TODO: Display ON when value is true
-              and OFF when value is false */}
-        </h2>
-
-        <button>
-          {/* TODO: Call the toggle function when clicked */}
-          Toggle
-        </button>
-
-      </div>
-
-    </div>
-  );
+  return [value, toggle];
 }
 
-export default App;
+export default useToggle;
